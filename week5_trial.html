@@ -1,25 +1,34 @@
 <html>
+
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
+
 <body>
     input 1:
-    <input id="number 1" type="text" value="3">
+    <input id="number1" type="text" value="3">
     <br>input 2:
-    <input id="number 2"type="text" value="5">
+    <input id="number2" type="text" value="5">
     <br>
-    <botton>my botton</botton>
-    <br>Result 
+    <button id="calculate">my button</button>
+    <br>Result
     <input id="result" type="text">
     <script>
-    $(function(){
-        // jquery
-        var n1=$('#number1').val();
-        var n2=$('#number2').val();
-        console.log(n1);
-    })
-
+        $(function() {
+            // jquery
+            $('#calculate').click(function() {
+                var n1 = $('#number1').val();
+                var n2 = $('#number2').val();
+                console.log(n1);
+                console.log(n2);
+                var r = n1 * n2;
+                console.log(r);
+                $('#result').val(r);
+            });
+        });
     </script>
-    <h1>heading</h1>
+    <h1>heading 1</h1>
+    <h1>heading 2</h1>
 </body>
+
 </html>
