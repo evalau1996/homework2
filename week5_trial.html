@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <title>JOUR2106 Data Visualization for News</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 
@@ -29,6 +30,91 @@
     </script>
     <h1>heading 1</h1>
     <h1>heading 2</h1>
+    <style>
+        correction {
+            background-color: lightyellow;
+        }
+        
+        .corrected {
+            text-decoration: line-through;
+            background-color: lightseagreen;
+            color: white;
+        }
+    </style>
+    <p>When you
+        <original class> writ</original>
+        <correction style="display: none;">write</correction>
+        <original class> and</original>
+        <correction style="display: none;">an</correction> article, it is easy to
+        <original class> made</original>
+        <correction style="display: none;">make</correction> typos or grammar
+        <original class> mistake</original>
+        <correction style="display: none;">mistakes</correction>.
+    </p>
+    <button id="toggle">Toggle answer</button>
+    <script>
+        $(function() {
+            var showCorrection = false;
+            $('#toggle').click(function() {
+                if (showCorrection) {
+                    $('correction').hide();
+                    $('original').removeClass('corrected');
+                    showCorrection = false;
+                } else {
+                    $('correction').show();
+                    $('original').addClass('corrected');
+                    showCorrection = true;
+                }
+            });
+            $('correction').hide();
+        })
+    </script>
+    <h1>heading 1</h1>
+    <h1>heading 2</h1>
+    <div id="myfigure" class="chart">
+        <div class="bar-block" style="height: 100px; left: 5px;">100</div>
+        <div class="bar-block" style="height: 120px; left: 45px;">120</div>
+        <div class="bar-block" style="height: 80px; left: 85px;">80</div>
+        <div class="bar-block" style="height: 60px; left: 125px;">60</div>
+        <div class="bar-block" style="height: 70px; left: 165px;">70</div>
+    </div>
+    <button id="add" class="btn btn-primary "> Add Oil! </button>
+    <style>
+        .bar-block {
+            background-color: #8286f4;
+            color: white;
+            text-align: right;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            position: absolute;
+            width: 30px;
+            bottom: 0;
+        }
+        
+        .chart {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            border: 1px solid;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        $(function() {
+            $('#add').click(function() {
+                // Note 1: map() method lets you execute a function on all matched elements
+                $('.bar-block').map(function() {
+                    // Note 2: $(this) refers to the current match element
+                    // Note 3: Deal with string/ number conversion
+                    $(this).text($(this).text() * 1 + 5);
+                    // Note 4: Deal with the "px" unit in CSS property value
+                    var height_px = $(this).css('height');
+                    var height = height_px.substr(0, height_px.length - 2);
+                    $(this).css('height', (height * 1 + 5) + 'px');
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
